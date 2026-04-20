@@ -1,0 +1,5 @@
+#!/bin/bash
+# Resolve symlinks to find the real script location
+REAL="$(readlink -f "$0" 2>/dev/null || realpath "$0" 2>/dev/null || echo "$0")"
+DIR="$(dirname "$REAL")"
+exec python3 "$DIR/pcap-analyzer.py" "$@"
